@@ -1,37 +1,37 @@
 /********************************************************************
-  File Information:
-    FileName:     	oled.h
-    Dependencies:   See INCLUDES section
-    Processor:      PIC18F46J50
-    Hardware:       PIC18F Starter Kit
-    Complier:  	    Microchip C18 (for PIC18)
-    Company:        Microchip Technology, Inc.
-    
-    Software License Agreement:
-    
-    The software supplied herewith by Microchip Technology Incorporated
-    (the “Company”) for its PIC® Microcontroller is intended and
-    supplied to you, the Company’s customer, for use solely and
-    exclusively on Microchip PIC Microcontroller products. The
-    software is owned by the Company and/or its supplier, and is
-    protected under applicable copyright laws. All rights are reserved.
-    Any use in violation of the foregoing restrictions may subject the
-    user to criminal sanctions under applicable laws, as well as to
-    civil liability for the breach of the terms and conditions of this
-    license.
-    
-    THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
-    WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
-    TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-    PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
-    IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
-    CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+File Information:
+FileName:     	oled.h
+Dependencies:   See INCLUDES section
+Processor:      PIC18F46J50
+Hardware:       PIC18F Starter Kit
+Complier:  	    Microchip C18 (for PIC18)
+Company:        Microchip Technology, Inc.
 
-  File Description:
-    
-    Change History:
-     Rev   Date         Description
-     1.0                Initial release
+Software License Agreement:
+
+The software supplied herewith by Microchip Technology Incorporated
+(the “Company”) for its PIC® Microcontroller is intended and
+supplied to you, the Company’s customer, for use solely and
+exclusively on Microchip PIC Microcontroller products. The
+software is owned by the Company and/or its supplier, and is
+protected under applicable copyright laws. All rights are reserved.
+Any use in violation of the foregoing restrictions may subject the
+user to criminal sanctions under applicable laws, as well as to
+civil liability for the breach of the terms and conditions of this
+license.
+
+THIS SOFTWARE IS PROVIDED IN AN “AS IS” CONDITION. NO WARRANTIES,
+WHETHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED
+TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+PARTICULAR PURPOSE APPLY TO THIS SOFTWARE. THE COMPANY SHALL NOT,
+IN ANY CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL OR
+CONSEQUENTIAL DAMAGES, FOR ANY REASON WHATSOEVER.
+
+File Description:
+
+Change History:
+Rev   Date         Description
+1.0                Initial release
 
 ********************************************************************/
 #ifndef OLED_H
@@ -45,11 +45,11 @@
 void WriteCommand(BYTE cmd);
 void WriteData(BYTE data);
 void FillDisplay(unsigned char data);
-void oledPutString(unsigned char *ptr,unsigned char page, unsigned char col);
-void oledPutROMString(rom unsigned char *ptr,unsigned char page, unsigned char col);
+void oledPutString(unsigned char *ptr, unsigned char page, unsigned char col);
+void oledPutROMString(rom unsigned char *ptr, unsigned char page, unsigned char col);
 void oledPutImage(rom unsigned char *ptr, unsigned char sizex, unsigned char sizey, unsigned char startx, unsigned char starty);
-void oledWriteChar1x(char letter, unsigned char page, unsigned char column) ;
-void oledWriteCharRaw( char letter );
+void oledWriteChar1x(char letter, unsigned char page, unsigned char column);
+void oledWriteCharRaw(char letter);
 
 /*********************************************/
 extern ROM BYTE g_pucFont[95][5];
@@ -77,20 +77,20 @@ extern ROM BYTE g_pucFont[95][5];
 #endif
 /*********************************************************************
 * Overview: Clipping region control codes to be used with SetClip(...)
-*           function. 
+*           function.
 *********************************************************************/
 #define CLIP_DISABLE       0 	// Disables clipping.
 #define CLIP_ENABLE        1	// Enables clipping.
 
 /*********************************************************************
-* Overview: Screen Saver parameters. 
-*			- SSON - Means that screen saver will be enabled when 
-*					 ScreenSaver(SSON) function is called with SSON as 
+* Overview: Screen Saver parameters.
+*			- SSON - Means that screen saver will be enabled when
+*					 ScreenSaver(SSON) function is called with SSON as
 *					 parameter.
-*			- SSOFF - Means that screen saver will be disbled when 
-*					 ScreenSaver(SSOFF) function is called with SSOFF as 
+*			- SSOFF - Means that screen saver will be disbled when
+*					 ScreenSaver(SSOFF) function is called with SSOFF as
 *					 parameter.
-*           
+*
 *********************************************************************/
 #define SSON				1	// screen saver is turned on
 #define	SSOFF				0	// screen saver is turned off
@@ -140,8 +140,8 @@ extern SHORT _clipBottom;
 /*********************************************************************
 * Macros:  PMPDelay()
 *
-* Overview: Delays execution for PMP cycle time. This is dependent on 
-*			processor clock. 
+* Overview: Delays execution for PMP cycle time. This is dependent on
+*			processor clock.
 *
 * PreCondition: none
 *
@@ -206,7 +206,7 @@ extern SHORT _clipBottom;
 /*********************************************************************
 * Macros:  ReadData(readByte)
 *
-* Overview: Reads a byte from the display buffer. This assumes that the 
+* Overview: Reads a byte from the display buffer. This assumes that the
 *			page value, lower and higher column address pointers are already set.
 *
 * PreCondition: Page, lower and higher column address pointers are already set.
@@ -238,8 +238,8 @@ extern SHORT _clipBottom;
 *
 ********************************************************************/
 #define SetAddress(page,lowerAddr,higherAddr)\
-	WriteCommand(page);\
-	WriteCommand(lowerAddr);\
+	WriteCommand(page); \
+	WriteCommand(lowerAddr); \
 	WriteCommand(higherAddr);
 
 /*********************************************************************
@@ -492,7 +492,7 @@ BYTE GetPixel(SHORT x, SHORT y);
 /*********************************************************************
 * Macros: IsDeviceBusy()
 *
-* Overview: Returns non-zero if LCD controller is busy 
+* Overview: Returns non-zero if LCD controller is busy
 *           (previous drawing operation is not completed).
 *
 * PreCondition: none
